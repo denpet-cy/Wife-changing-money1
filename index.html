@@ -6,12 +6,13 @@
     <title>$WCM | Wife Changing Money</title>
     <style>
         :root {
-            --bg-color: #0b0e14;
-            --card-bg: #151a26;
-            --accent-green: #00ff88;
+            --bg-color: #0c0f12;
+            --card-bg: #14191f;
+            --accent-green: #90e052; /* De specifieke groen/limoen tint uit het screenshot */
             --accent-purple: #9d4edd;
             --text-main: #ffffff;
-            --text-muted: #8a99ad;
+            --text-muted: #8492a6;
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -28,15 +29,14 @@
             line-height: 1.6;
         }
 
-        /* Glow effect background */
         .glow-bg {
             position: absolute;
             top: -10%;
             left: 50%;
             transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, rgba(157,78,221,0.05) 50%, transparent 100%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(144,224,82,0.1) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -51,169 +51,294 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: 1px;
-            background: linear-gradient(45deg, var(--accent-green), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
+            color: var(--text-main);
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text-muted);
             text-decoration: none;
             margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: var(--accent-green);
+            color: var(--text-main);
         }
 
         .hero {
-            text-align: center;
-            padding: 6rem 1rem 4rem 1rem;
-            max-width: 800px;
+            text-align: left;
+            padding: 6rem 5% 4rem 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .badge {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--accent-green);
+        .section-tag {
             color: var(--accent-green);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-tag::before {
+            content: '●';
+            font-size: 0.7rem;
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.2;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         h1 span {
             color: var(--accent-green);
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            max-width: 600px;
             margin-bottom: 2.5rem;
         }
 
-        .cta-group {
+        .btn-container {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
 
-        .cta-btn {
-            background: linear-gradient(45deg, var(--accent-green), #00e1ff);
+        .btn {
+            background-color: var(--accent-green);
             color: #000;
             text-decoration: none;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
+            padding: 1rem 2rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
+            border-radius: 4px;
+            transition: opacity 0.2s;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
+        .btn:hover {
+            opacity: 0.9;
         }
 
-        .cta-secondary {
-            background: transparent;
+        .btn-secondary {
+            background-color: transparent;
             color: var(--text-main);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: none;
+            border: 1px solid var(--border-color);
         }
 
-        .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--accent-purple);
-            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.2);
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-purple);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .card p {
+        .sub-info {
+            font-size: 0.75rem;
             color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
         }
 
-        .highlight-text {
-            color: var(--accent-purple);
-            font-weight: bold;
+        /* Contract Address Styling uit screenshot 1 */
+        .contract-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+
+        .contract-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .contract-header a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .contract-header a:hover {
+            color: var(--text-main);
+        }
+
+        .contract-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .address-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 1rem;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        /* Reward Book Dashboard uit screenshot 2 */
+        .dashboard-section {
+            border-top: 1px solid var(--border-color);
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .dashboard-title h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .dashboard-title p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .stat-large .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-large .value {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            line-height: 1;
+        }
+
+        .stat-large .value span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .stats-sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        .stat-small .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-small .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        .footer-note a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* Mascot footer styling */
+        .mascot-container {
+            text-align: center;
+            padding: 4rem 1rem 0 1rem;
+            position: relative;
+        }
+
+        .mascot-img {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: -10px; /* Laat de afbeelding visueel aansluiten op de footer */
         }
 
         footer {
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 4rem 5%;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .disclaimer {
             font-size: 0.75rem;
-            margin-top: 1.5rem;
-            max-width: 600px;
+            margin-top: 2rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             opacity: 0.6;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .cta-group { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -224,45 +349,27 @@
     <header>
         <div class="logo">$WCM</div>
         <nav class="nav-links">
-            <a href="#concept">Concept</a>
-            <a href="https://t.me/wifechangingmoneyrhc" target="_blank">Telegram</a>
+            <a href="#rewards">Rewards</a>
+            <a href="https://t.me" target="_blank">Telegram</a>
             <a href="https://x.com" target="_blank">Twitter / X</a>
             <a href="https://zealz.fun" target="_blank">Launchpad</a>
         </nav>
     </header>
 
     <main>
+        <!-- HOOFDSECTIE (Overeenkomstig met Screenshot 1) -->
         <section class="hero">
-            <div class="badge">🚀 Launching soon on Zealz.fun</div>
-            <h1>Forget 'Life Changing'. <br>This is <span>Wife Changing Money</span>.</h1>
-            <p>The ultimate hyper-meme token built for the true degens. No fake promises, no complex whitepapers. Just pure internet culture and solid privacy-based rewards.</p>
+            <div class="section-tag">The Hold-To-Earn Meme</div>
+            <h1>Hold $WCM.<br><span>Get Zcash.</span></h1>
+            <p>Hold $WCM to qualify. Zcash rewards arrive as zZEC in your wallet on Robinhood Chain.</p>
             
-            <div class="cta-group">
-                <a href="https://zealz.fun" target="_blank" class="cta-btn">Buy on Zealz.fun</a>
-                <a href="https://t.me/wifechangingmoneyrhc" target="_blank" class="cta-btn cta-secondary">Join Telegram</a>
-            </div>
-        </section>
+            <div class="sub-info">100% of the creator fee share funds holder rewards</div>
 
-        <section class="features" id="concept">
-            <div class="card">
-                <h3>💎 The Ultimate Meme</h3>
-                <p>Inspired by the legendary WallStreetBets mindset. $WCM is built for the community that isn't afraid to dream big and play hard.</p>
+            <div class="btn-container">
+                <a href="https://zealz.fun" target="_blank" class="btn">Get $WCM on Zealz ↗</a>
+                <a href="#rewards" class="btn btn-secondary">Check a wallet ↓</a>
             </div>
-            <div class="card">
-                <h3>🛡️ ZCash Passive Income</h3>
-                <p>Simply hold $WCM in your wallet and automatically generate <span class="highlight-text">$ZZEC rewards</span> directly through the Zealz ecosystem.</p>
-            </div>
-            <div class="card">
-                <h3>⚡ Fair Launch</h3>
-                <p>Launched via <span class="highlight-text">zealz.fun</span>. No insider pre-allocations, no hidden team tokens. Everyone starts on a level playing field.</p>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 $WCM Token. All rights reserved.</p>
-        <p class="disclaimer">Disclaimer: $WCM is a meme token created for entertainment and satirical purposes only. It carries no inherent utility or financial promise. Crypto-assets are highly volatile. Trade responsibly and never invest money you cannot afford to lose. Not Financial Advice ($NFA).</p>
-    </footer>
+            <div class="sub-info" style="margin-bottom: 0;">$WCM trades on Zealz.fun</div>
 
-</body>
-</html>
+            
