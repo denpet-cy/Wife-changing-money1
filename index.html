@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$WCM | Wife Changing Money</title>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #151a26;
+            --accent-green: #00ff88;
+            --accent-purple: #9d4edd;
+            --text-main: #ffffff;
+            --text-muted: #8a99ad;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Glow effect achtergrond */
+        .glow-bg {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, rgba(157,78,221,0.05) 50%, transparent 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 1rem 4rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 span {
+            color: var(--accent-green);
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, var(--accent-green), #00e1ff);
+            color: #000;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        .highlight-text {
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <header>
+        <div class="logo">$WCM</div>
+        <nav class="nav-links">
+            <a href="#concept">Concept</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="https://zealz.fun" target="_blank">Launchpad</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="badge">🚀 Live op Zealz.fun binnenkort</div>
+            <h1>Vergeet 'Life Changing'. <br>Dit is <span>Wife Changing Money</span>.</h1>
+            <p>De ultieme hyper-meme token gebouwd voor de echte risiconemers. Geen loze beloftes, geen ingewikkelde whitepapers. Gewoon pure cultuur en keiharde privacy-beloningen.</p>
+            <!-- Vervang de '#' hieronder met je exacte zealz.fun launch link zodra je die hebt -->
+            <a href="https://zealz.fun" target="_blank" class="cta-btn">Koop op Zealz.fun</a>
+        </section>
+
+        <section class="features" id="concept">
+            <div class="card">
+                <h3>💎 De Ultieme Meme</h3>
+                <p>Geïnspireerd op de legendarische WallStreetBets mentaliteit. $WCM is er voor de community die niet bang is om groots te dromen.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ ZCash Passief Inkomen</h3>
+                <p>Simpelweg door $WCM in je wallet te houden, genereer je automatisch <span class="highlight-text">$ZZEC beloningen</span> rechtstreeks via het Zealz ecosysteem.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Eerlijke Lancering</h3>
+                <p>Gelanceerd via <span class="highlight-text">zealz.fun</span>. Geen pre-allocaties voor insiders, geen onbepaalde dumps. Iedereen start op de cryptomarkt met gelijke kansen.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 $WCM Token. Alle rechten voorbehouden.</p>
+        <p class="disclaimer">Disclaimer: $WCM is een meme-token gecreëerd voor entertainment en satirische doeleinden. Er is geen enkele garantie op financieel rendement. Crypto-assets zijn extreem volatiel. Handel verantwoord en investeer nooit geld dat je niet kunt missen. Not Financial Advice ($NFA).</p>
+    </footer>
+
+</body>
+</html>
